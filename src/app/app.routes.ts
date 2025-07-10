@@ -1,14 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { GeographyComponent } from './geography/geography.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent
+    path: ':quizType',
+    component: QuizComponent,
   },
-  {
-    path: 'geography',
-    component: GeographyComponent,
-  },
+
 ];
