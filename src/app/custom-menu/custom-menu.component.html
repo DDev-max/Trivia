@@ -1,0 +1,29 @@
+<div class="questionForm">
+  <div class="optionsCont">
+    <a routerLink="/custom/create" class="inputLabel">
+      <div
+        class="bgImg"
+        style="background-image: url('/customImgs/create.webp')"
+      ></div>
+      <span class="optValue">Create</span>
+    </a>
+
+    @if (!triviaCreated.length) {
+    <div class="inputLabel">
+      <div
+        class="bgImg bgImg--disabled"
+        style="background-image: url('/customImgs/custom1.webp')"
+      ></div>
+      <span class="optValue optValue--disabled">My trivia game</span>
+    </div>
+    } @else { @for (item of triviaCreated; track $index) {
+    <a [routerLink]="['/custom/play/', item]" class="inputLabel">
+      <div
+        class="bgImg"
+        style="background-image: url('/customImgs/custom{{ $index + 1 }}.webp')"
+      ></div>
+      <span class="optValue">{{ item }}</span>
+    </a>
+    } }
+  </div>
+</div>

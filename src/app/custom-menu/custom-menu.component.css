@@ -1,0 +1,8 @@
+.inputLabel:hover .bgImg--disabled {
+  opacity: 0.3;
+}
+
+.optValue--disabled {
+  background: #44093d;
+  color: #a4a4a4;
+}

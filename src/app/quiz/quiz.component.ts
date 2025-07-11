@@ -28,13 +28,17 @@ export class QuizComponent {
     quizService: QuizDataService
   ) {
     this.ar.paramMap.subscribe((params: ParamMap) => {
-      const quizType = params.get('quizType') as CategoryKey;
+      const quizType = params.get('quizType') as Exclude<CategoryKey, 'custom'>;
+      const customQuizName = params.get('customQuizName') || '';
 
-      if (!this.categories.includes(quizType)) {
+      if (
+        !this.categories.includes(quizType) &&
+        !Object.keys(localStorage).includes(customQuizName)
+      ) {
         router.navigate(['/']);
       }
 
-      this.quizInfo = quizService.getQuizByType(quizType);
+      this.quizInfo = quizService.getQuizByType(quizType || customQuizName);
     });
   }
 

@@ -5,13 +5,14 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
-body{
+body {
   background-color: rgb(31, 3, 3);
   font-family: Arial, Helvetica, sans-serif;
 }
-
 
 @keyframes changeGridRows {
   from {
@@ -24,5 +25,55 @@ body{
 
 ::view-transition-old(gridRows),
 ::view-transition-new(gridRows) {
-  animation-duration: .5s;
+  animation-duration: 0.5s;
+}
+
+.questionForm {
+  padding: 1rem;
+  text-align: center;
+  height: 100%;
+  display: flex;
+}
+.optionsCont {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+
+  gap: 0.5 rem;
+  width: 100%;
+}
+
+.optValue {
+  background-color: #cb3232;
+  color: white;
+  z-index: 1;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.bgImg {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  opacity: 0.3;
+  border-radius: 1rem;
+  border: 2px solid black;
+}
+
+.inputLabel:hover .bgImg {
+  opacity: 0.7;
+}
+
+.inputLabel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
 }

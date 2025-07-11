@@ -12,7 +12,7 @@ export interface Options {
   imgSrc: string;
 }
 
-type QuizJsonInt = Record<CategoryKey, Questions[]>;
+type QuizJsonInt = Record<Exclude<CategoryKey, 'custom'>, Questions[]>;
 
 export const quizJson: QuizJsonInt = {
   history: [
@@ -417,13 +417,6 @@ export const quizJson: QuizJsonInt = {
           imgSrc: '/entertainmentImgs/oasis.webp',
         },
       ],
-    },
-  ],
-  custom: [
-    {
-      id: '',
-      options: [{ imgSrc: '', isCorrect: false, value: '' }],
-      question: '',
     },
   ],
   food: [
@@ -944,10 +937,22 @@ export const quizJson: QuizJsonInt = {
         '¿En qué deporte se utiliza una raqueta y una pelota en una cancha dividida por una red?',
       id: 'd1',
       options: [
-        { value: 'Bádminton', isCorrect: false, imgSrc: '/sportsImgs/badminton.webp' },
+        {
+          value: 'Bádminton',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/badminton.webp',
+        },
         { value: 'Tenis', isCorrect: true, imgSrc: '/sportsImgs/tenis.webp' },
-        { value: 'Squash', isCorrect: false, imgSrc: '/sportsImgs/squash.webp' },
-        { value: 'Ping Pong', isCorrect: false, imgSrc: '/sportsImgs/pinpon.webp' },
+        {
+          value: 'Squash',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/squash.webp',
+        },
+        {
+          value: 'Ping Pong',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/pinpon.webp',
+        },
       ],
     },
     {
@@ -965,8 +970,16 @@ export const quizJson: QuizJsonInt = {
       question: '¿Qué país ha ganado más Copas Mundiales de Fútbol?',
       id: 'd3',
       options: [
-        { value: 'Alemania', isCorrect: false, imgSrc: '/geoImgs/alemania.webp' },
-        { value: 'Argentina', isCorrect: false, imgSrc: '/sportsImgs/argentina.webp' },
+        {
+          value: 'Alemania',
+          isCorrect: false,
+          imgSrc: '/geoImgs/alemania.webp',
+        },
+        {
+          value: 'Argentina',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/argentina.webp',
+        },
         { value: 'Brasil', isCorrect: true, imgSrc: '/sportsImgs/brazil.webp' },
         { value: 'Italia', isCorrect: false, imgSrc: '/foodImgs/italia.webp' },
       ],
@@ -975,20 +988,48 @@ export const quizJson: QuizJsonInt = {
       question: '¿En qué ciudad se celebraron los Juegos Olímpicos de 2012?',
       id: 'd4',
       options: [
-        { value: 'Londres', isCorrect: true, imgSrc: '/sportsImgs/londres.webp' },
-        { value: 'Beijing', isCorrect: false, imgSrc: '/sportsImgs/beijing.webp' },
+        {
+          value: 'Londres',
+          isCorrect: true,
+          imgSrc: '/sportsImgs/londres.webp',
+        },
+        {
+          value: 'Beijing',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/beijing.webp',
+        },
         { value: 'Tokio', isCorrect: false, imgSrc: '/sportsImgs/tokio.webp' },
-        { value: 'Río de Janeiro', isCorrect: false, imgSrc: '/sportsImgs/riojaneiro.webp' },
+        {
+          value: 'Río de Janeiro',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/riojaneiro.webp',
+        },
       ],
     },
     {
       question: '¿Qué piloto ha ganado más campeonatos de Fórmula 1?',
       id: 'd5',
       options: [
-        { value: 'Lewis Hamilton', isCorrect: true, imgSrc: '/sportsImgs/hamilton.webp' },
-        { value: 'Ayrton Senna', isCorrect: false, imgSrc: '/sportsImgs/senna.webp' },
-        { value: 'Sebastian Vettel', isCorrect: false, imgSrc: '/sportsImgs/vettek.webp' },
-        { value: 'Michael Schumacher', isCorrect: false, imgSrc: '/sportsImgs/michael.webp' },
+        {
+          value: 'Lewis Hamilton',
+          isCorrect: true,
+          imgSrc: '/sportsImgs/hamilton.webp',
+        },
+        {
+          value: 'Ayrton Senna',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/senna.webp',
+        },
+        {
+          value: 'Sebastian Vettel',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/vettek.webp',
+        },
+        {
+          value: 'Michael Schumacher',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/michael.webp',
+        },
       ],
     },
     {
@@ -996,19 +1037,43 @@ export const quizJson: QuizJsonInt = {
       id: 'd6',
       options: [
         { value: 'Francia', isCorrect: true, imgSrc: '/foodImgs/francia.webp' },
-        { value: 'Brasil', isCorrect: false, imgSrc: '/sportsImgs/brazil.webp' },
-        { value: 'Italia', isCorrect: false, imgSrc: '/foodImgs/italia.webp'  },
-        { value: 'Alemania', isCorrect: false, imgSrc: '/geoImgs/alemania.webp' },
+        {
+          value: 'Brasil',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/brazil.webp',
+        },
+        { value: 'Italia', isCorrect: false, imgSrc: '/foodImgs/italia.webp' },
+        {
+          value: 'Alemania',
+          isCorrect: false,
+          imgSrc: '/geoImgs/alemania.webp',
+        },
       ],
     },
     {
       question: '¿Qué país es conocido por ser potencia mundial en rugby?',
       id: 'd7',
       options: [
-        { value: 'Nueva Zelanda', isCorrect: true, imgSrc: '/sportsImgs/zelanda.webp' },
-        { value: 'Inglaterra', isCorrect: false, imgSrc: '/sportsImgs/inglaterra.webp' },
-        { value: 'Sudáfrica', isCorrect: false, imgSrc: '/sportsImgs/sudafrica.webp' },
-        { value: 'Australia', isCorrect: false, imgSrc: '/sportsImgs/sudafrica.webp' },
+        {
+          value: 'Nueva Zelanda',
+          isCorrect: true,
+          imgSrc: '/sportsImgs/zelanda.webp',
+        },
+        {
+          value: 'Inglaterra',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/inglaterra.webp',
+        },
+        {
+          value: 'Sudáfrica',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/sudafrica.webp',
+        },
+        {
+          value: 'Australia',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/sudafrica.webp',
+        },
       ],
     },
     {
@@ -1016,10 +1081,26 @@ export const quizJson: QuizJsonInt = {
         '¿Qué deportista ha ganado más medallas olímpicas de la historia?',
       id: 'd8',
       options: [
-        { value: 'Michael Phelps', isCorrect: true, imgSrc: '/sportsImgs/phelps.webp' },
-        { value: 'Usain Bolt', isCorrect: false, imgSrc: '/sportsImgs/bolt.webp' },
-        { value: 'Simone Biles', isCorrect: false, imgSrc: '/sportsImgs/biles.webp' },
-        { value: 'Carl Lewis', isCorrect: false, imgSrc: '/sportsImgs/lewis.webp' },
+        {
+          value: 'Michael Phelps',
+          isCorrect: true,
+          imgSrc: '/sportsImgs/phelps.webp',
+        },
+        {
+          value: 'Usain Bolt',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/bolt.webp',
+        },
+        {
+          value: 'Simone Biles',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/biles.webp',
+        },
+        {
+          value: 'Carl Lewis',
+          isCorrect: false,
+          imgSrc: '/sportsImgs/lewis.webp',
+        },
       ],
     },
   ],

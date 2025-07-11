@@ -78,7 +78,7 @@ export class CustomQuizComponent {
       return;
     }
 
-    const jsonForm = JSON.stringify(this.quizForm.value);
+    const jsonForm = JSON.stringify(this.quizForm.get('questions')?.value);
     const triviaName = this.quizForm.get('triviaName')?.value;
 
     localStorage.setItem(triviaName, jsonForm);

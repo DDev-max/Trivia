@@ -42,7 +42,7 @@ export class AppComponent {
     this.router.events.subscribe((e) => {
       if (!(e instanceof NavigationEnd)) return;
 
-      const pathName = e.url.replace('/', '') as CategoryKey;
+      const pathName = e.url.split('/').filter(Boolean)[0] as CategoryKey;
       const categoriesNames: readonly CategoryKey[] = [
         'custom',
         'entertainment',
@@ -57,9 +57,8 @@ export class AppComponent {
         ? this.categoryColors[pathName]
         : '';
 
-      this.categoryTxtColor = this.catgrySrvice.getCategoryByName(pathName)?.textColor || '';
-      console.log("OATH: ", pathName, 'COLOR: ', this.categoryTxtColor);
-      
+      this.categoryTxtColor =
+        this.catgrySrvice.getCategoryByName(pathName)?.textColor || '';
     });
   }
 
