@@ -1,0 +1,105 @@
+form {
+  font-size: 1rem;
+  padding: 0.5rem;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+fieldset {
+  border: 0.2rem solid darkorange;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+.optionsContainer {
+  background-color: #8d3c8d;
+  padding: 1rem;
+  border-radius: 2rem;
+  margin: 1rem 0;
+}
+
+.optionsContainer_inputsContainer {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem 0 1rem 1rem;
+  padding: 0 0 1rem 0;
+
+  border-bottom: 0.1rem solid darkorange;
+}
+
+.inputsContainer_label {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"] {
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.questionLabel {
+  width: 90%;
+}
+
+.questionLabel input {
+  width: 80%;
+}
+
+button {
+  padding: 0.7rem;
+  border-radius: 1rem;
+  border: 0.2rem solid rgb(212 132 132);
+  box-shadow: inset -0.2rem -0.2rem 0.2rem #c64242;
+  background: #fdb575;
+  line-height: 1;
+}
+
+button:hover {
+  background-color: #c64242;
+  color: white;
+  cursor: pointer;
+}
+
+.removeBtnRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.optionsContainer .removeBtnRow button {
+  background: transparent;
+  box-shadow: none;
+}
+
+.footerBtns {
+  margin: 1rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.formErrorMsg {
+  padding: 0.5rem;
+  background: #ff5050;
+  border-radius: 1rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #000000;
+  font-weight: bold;
+}
+
+.optionsContainer_generalErrors {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}

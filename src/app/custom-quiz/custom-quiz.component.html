@@ -1,0 +1,117 @@
+<form [formGroup]="quizForm" (ngSubmit)="saveTrivia()">
+  <h1>Create your own trivia game</h1>
+
+  <label>
+    Trivia Name:
+    <input
+      formControlName="triviaName"
+      placeholder="My trivia game"
+      id="triviaName"
+      type="text"
+    />
+  </label>
+
+  @if (quizForm.get('triviaName')?.hasError('required')) {
+  <p class="formErrorMsg">Please enter trivia name</p>
+  } @if (quizForm.get('triviaName')?.hasError('itsInLocalStorage')) {
+  <p class="formErrorMsg">La trivia ya existe, por favor asigne otro nombre.</p>
+  } @for (questionCtrl of questions.controls; track $index; let qIdx = $index) {
+
+  <fieldset [formGroup]="questionCtrl">
+    <legend>Question #{{ qIdx + 1 }}</legend>
+    <div class="removeBtnRow">
+      <label class="questionLabel">
+        Question:
+        <input
+          placeholder="What is my favorite food?"
+          formControlName="question"
+          id="question{{ qIdx }}"
+          type="text"
+        />
+      </label>
+      <button (click)="removeQuestion(qIdx)">❌</button>
+    </div>
+    @if (questionCtrl.get('question')?.invalid &&
+    questionCtrl.get('question')?.touched) {
+    <p class="formErrorMsg">Please enter the name of the question.</p>
+    }
+
+    <div class="optionsContainer">
+      @for (optionCtrlName of getOptionsByIdx(qIdx).controls; track $index; let
+      optIdx = $index) {
+
+      <div>
+        <div class="removeBtnRow">
+          <b>Option #{{ optIdx + 1 }}</b>
+          <button (click)="removeOption(qIdx, optIdx)">❌</button>
+        </div>
+        <div
+          [formGroup]="optionCtrlName"
+          class="optionsContainer_inputsContainer"
+        >
+          <div>
+            <label class="inputsContainer_label">
+              Answer:
+              <input
+                id="answer{{ qIdx }},{{ optIdx }}"
+                [placeholder]="optIdx === 0 ? 'Sandwich' : 'Pizza'"
+                formControlName="value"
+                type="text"
+              />
+            </label>
+            @if (optionCtrlName.get('value')?.invalid &&
+            optionCtrlName.get('value')?.touched) {
+            <p class="formErrorMsg">Please enter the option name</p>
+
+            }
+          </div>
+
+          <label>
+            Correct Answer?
+            <input
+              id="isCorrect{{ qIdx }},{{ optIdx }}"
+              formControlName="isCorrect"
+              type="checkbox"
+            />
+          </label>
+
+          <label>
+            Image Link (Optional):
+            <input
+              placeholder="https://image.jpg"
+              id="imgSrc{{ qIdx }},{{ optIdx }}"
+              formControlName="imgSrc"
+              type="text"
+            />
+          </label>
+        </div>
+      </div>
+      }
+
+      <div>
+        <div class="optionsContainer_generalErrors">
+          @if (getOptionsByIdx(qIdx).length <=1 ) {
+          <p class="formErrorMsg">Please enter at least two options</p>
+
+          } @if ( getOptionsByIdx(qIdx).hasError('noCorrectAnswer')) {
+          <p class="formErrorMsg">
+            At least one option must be checked as correct.
+          </p>
+          } @if (getOptionsByIdx(qIdx).hasError('allAreCorrect')) {
+          <p class="formErrorMsg">All answers cannot be correct</p>
+          }
+        </div>
+        <button type="button" (click)="addOption(qIdx)">
+          Add More Options
+        </button>
+      </div>
+    </div>
+  </fieldset>
+
+  }
+
+  <footer class="footerBtns">
+    <button type="button" (click)="addQuestion()">Add New Question</button>
+    <button>Finish Trivia</button>
+  </footer>
+</form>
