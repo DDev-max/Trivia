@@ -6,7 +6,7 @@ export interface Questions {
   options: Options[];
 }
 
-interface Options {
+export interface Options {
   value: string;
   isCorrect: boolean;
   imgSrc: string;

@@ -40,12 +40,12 @@
   </p>
   } @else if (correctAnswerCount <= 5) {
   <p>
-    “Well done! You got {{ correctAnswerCount }} out of 10 questions right. You
+    “Well done! You got {{ correctAnswerCount }} out of {{quizInfo.length}} questions right. You
     really know your stuff!”
   </p>
   } @else if (correctAnswerCount >=6) {
   <p>
-    “Amazing! You answered {{ correctAnswerCount }} out of 10 questions
+    “Amazing! You answered {{ correctAnswerCount }} out of {{quizInfo.length}} questions
     correctly. You're a true trivia master!”
   </p>
   }
