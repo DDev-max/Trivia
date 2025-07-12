@@ -115,3 +115,13 @@
     <button>Finish Trivia</button>
   </footer>
 </form>
+
+<app-dialog [isOpen]="isSubmitted" text="Trivia created!">
+  <a
+    class="dialogBtn"
+    [routerLink]="['/custom/play/', quizForm.get('triviaName')?.value]"
+    >Play
+  </a>
+
+  <button class="dialogBtn" (click)="resetForm()">Create a new trivia</button>
+</app-dialog>

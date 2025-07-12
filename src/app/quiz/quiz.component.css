@@ -6,17 +6,3 @@ legend {
 legend span {
   font-size: 1.5rem;
 }
-
-.dialogBtn {
-  font-size: 1.5rem;
-  background-color: orange;
-  color: black;
-  margin: 1rem 1rem 0 1rem;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: none;
-  border: none;
-}
-

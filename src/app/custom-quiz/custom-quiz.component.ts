@@ -9,10 +9,12 @@ import {
 } from '@angular/forms';
 import { checkBoxValidators } from './validators/check-box-validators';
 import { localStorageValidator } from './validators/local-storage-validator';
+import { DialogComponent } from '../dialog/dialog.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-custom-quiz',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DialogComponent, RouterLink],
   templateUrl: './custom-quiz.component.html',
   styleUrl: './custom-quiz.component.css',
 })
@@ -72,6 +74,7 @@ export class CustomQuizComponent {
     this.getOptionsByIdx(questionIdx).removeAt(optIdx);
   }
 
+  isSubmitted = false
   saveTrivia() {
     if (this.quizForm.invalid) {
       this.quizForm.markAllAsTouched();
@@ -82,5 +85,11 @@ export class CustomQuizComponent {
     const triviaName = this.quizForm.get('triviaName')?.value;
 
     localStorage.setItem(triviaName, jsonForm);
+    this.isSubmitted = true
+  }
+
+  resetForm(){
+    this.quizForm.reset()
+    this.isSubmitted = false
   }
 }
