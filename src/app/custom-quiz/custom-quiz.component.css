@@ -55,21 +55,6 @@ input[type="text"] {
   width: 80%;
 }
 
-button {
-  padding: 0.7rem;
-  border-radius: 1rem;
-  border: 0.2rem solid rgb(212 132 132);
-  box-shadow: inset -0.2rem -0.2rem 0.2rem #c64242;
-  background: #fdb575;
-  line-height: 1;
-}
-
-button:hover {
-  background-color: #c64242;
-  color: white;
-  cursor: pointer;
-}
-
 .removeBtnRow {
   display: flex;
   justify-content: space-between;

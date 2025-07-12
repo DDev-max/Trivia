@@ -7,39 +7,7 @@ legend span {
   font-size: 1.5rem;
 }
 
-.wrongAnswer {
-  opacity: 1;
-  background-color: red;
-}
-
-.correctAnswer {
-  opacity: 1;
-  background: green;
-}
-
-.selectedOption {
-  opacity: 1;
-  border: 0.5rem solid gold;
-}
-
-.triviaFinishedDialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-
-  font-size: 2.5rem;
-  padding: 1rem;
-  background: darkgrey;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.triviaFinishedDialog button,
-.triviaFinishedDialog a {
+.dialogBtn {
   font-size: 1.5rem;
   background-color: orange;
   color: black;
@@ -48,14 +16,7 @@ legend span {
   border-radius: 1rem;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: none;
+  border: none;
 }
 
-.dialogBg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 100vw;
-  background: black;
-  opacity: 0.7;
-}

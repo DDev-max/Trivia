@@ -1,0 +1,30 @@
+@if (inputClick.observed) {
+<label class="inputLabel">
+  <div
+    [class]="bgImgCss?.class"
+    class="bgImg"
+    [style.backgroundImage]="bgImgCss?.imgSrc"
+  ></div>
+  <span [class]="valueCssClass" class="optValue"> {{ value }} </span>
+  <input
+    [id]="inputId"
+    type="radio"
+    name="option"
+    (click)="inputClick.emit($event)"
+    [value]="value"
+  />
+</label>
+}@else {
+<div class="customTriviaContainer">
+  @if (clickRemoveBtn.observed) { <button (click)="clickRemoveBtn!.emit()">❌</button>}
+  <a [routerLink]="link ? link : null" class="inputLabel">
+    <div
+      [class]="bgImgCss?.class"
+      class="bgImg"
+      [style.backgroundImage]="bgImgCss?.imgSrc"
+    ></div>
+    <span  [class]="valueCssClass" class="optValue">{{ value }}</span>
+  </a>
+</div>
+
+}

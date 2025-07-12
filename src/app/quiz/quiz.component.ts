@@ -3,9 +3,11 @@ import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { CategoryKey } from '../categories.service';
 import { QuizDataService } from './quiz-data.service';
 import { Questions } from '../quiz/quizJson';
+import { DialogComponent } from '../dialog/dialog.component';
+import { TriviaOptionComponent } from '../trivia-option/trivia-option.component';
 @Component({
   selector: 'app-quiz',
-  imports: [RouterLink],
+  imports: [DialogComponent, RouterLink, TriviaOptionComponent],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css',
 })
@@ -85,5 +87,17 @@ export class QuizComponent {
     this.isShowingAnswers = false;
     this.selectedOptionIdx = -1;
     this.correctAnswerCount = 0;
+  }
+
+  get resultMessage() {
+    const total = this.quizInfo.length;
+
+    if (this.correctAnswerCount <= 3) {
+      return `You answered ${this.correctAnswerCount} out of ${total} questions correctly. Not bad! Keep practicing and you'll get even better.`;
+    } else if (this.correctAnswerCount <= 5) {
+      return `Well done! You got ${this.correctAnswerCount} out of ${total} questions right. You really know your stuff!`;
+    } else {
+      return `Amazing! You answered ${this.correctAnswerCount} out of ${total} questions correctly. You're a true trivia master!`;
+    }
   }
 }

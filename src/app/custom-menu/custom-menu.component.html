@@ -1,29 +1,33 @@
 <div class="questionForm">
   <div class="optionsCont">
-    <a routerLink="/custom/create" class="inputLabel">
-      <div
-        class="bgImg"
-        style="background-image: url('/customImgs/create.webp')"
-      ></div>
-      <span class="optValue">Create</span>
-    </a>
+    <app-trivia-option
+      link="/custom/create"
+      value="Create"
+      [bgImgCss]="{ class: '', imgSrc: 'url(/customImgs/create.webp)' }"
+    />
 
     @if (!triviaCreated.length) {
-    <div class="inputLabel">
-      <div
-        class="bgImg bgImg--disabled"
-        style="background-image: url('/customImgs/custom1.webp')"
-      ></div>
-      <span class="optValue optValue--disabled">My trivia game</span>
-    </div>
+
+    <app-trivia-option
+      value="You don't have any trivia created"
+      valueCssClass="optValue--disabled"
+      [bgImgCss]="{
+        class: ' bgImg--disabled',
+        imgSrc: ' url(/customImgs/custom1.webp)'
+      }"
+    />
+
     } @else { @for (item of triviaCreated; track $index) {
-    <a [routerLink]="['/custom/play/', item]" class="inputLabel">
-      <div
-        class="bgImg"
-        style="background-image: url('/customImgs/custom{{ $index + 1 }}.webp')"
-      ></div>
-      <span class="optValue">{{ item }}</span>
-    </a>
+
+    <app-trivia-option
+      [value]="item"
+      (clickRemoveBtn)="removeTrivia(item)"
+      [link]="['/custom/play/', item]"
+      [bgImgCss]="{
+        class: '',
+        imgSrc: 'url(/customImgs/custom' + ($index + 1) + '.webp)'
+      }"
+    />
     } }
   </div>
 </div>

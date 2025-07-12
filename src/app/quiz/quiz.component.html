@@ -2,57 +2,30 @@
   <fieldset>
     <legend>
       {{ quizInfo[currentQuestionIdx].question }}
-      <span>({{ currentQuestionIdx + 1 }}/{{quizInfo.length}})</span>
+      <span>({{ currentQuestionIdx + 1 }}/{{ quizInfo.length }})</span>
     </legend>
 
     <div class="optionsCont">
       @for (item of quizInfo[currentQuestionIdx].options; track $index) {
-      <label class="inputLabel">
-        <div
-          [class]="{
+      <app-trivia-option
+        [value]="item.value"
+        (inputClick)="validateAnswer($index, item.isCorrect, $event)"
+        [bgImgCss]="{
+          class: {
             wrongAnswer: !item.isCorrect && isShowingAnswers,
             correctAnswer: item.isCorrect && isShowingAnswers,
             selectedOption: $index == selectedOptionIdx
-          }"
-          class="bgImg"
-          [style.backgroundImage]=" isShowingAnswers? '' : `url(${item.imgSrc})`"
-        ></div>
-        <span class="optValue"> {{ item.value }} </span>
-        <input
-          type="radio"
-          (click)="validateAnswer($index, item.isCorrect, $event)"
-          [value]="item.value"
-        />
-      </label>
+          },
+          imgSrc: isShowingAnswers ? '' : 'url(' + item.imgSrc + ')'
+        }"
+      />
+
       }
     </div>
   </fieldset>
 </form>
 
-@if (isTriviaFinished) {
-<div class="dialogBg"></div>
-
-<dialog class="triviaFinishedDialog" [open]="isTriviaFinished">
-  @if (correctAnswerCount <= 3) {
-  <p>
-    You answered {{ correctAnswerCount }} out of {{quizInfo.length}} questions correctly. Not
-    bad! Keep practicing and you'll get even better
-  </p>
-  } @else if (correctAnswerCount <= 5) {
-  <p>
-    “Well done! You got {{ correctAnswerCount }} out of {{quizInfo.length}} questions right. You
-    really know your stuff!”
-  </p>
-  } @else if (correctAnswerCount >=6) {
-  <p>
-    “Amazing! You answered {{ correctAnswerCount }} out of {{quizInfo.length}} questions
-    correctly. You're a true trivia master!”
-  </p>
-  }
-
-  <form method="dialog">
-    <button (click)="resetTrivia()">Retry</button>
-    <a routerLink="/">Go to menu</a>
-  </form>
-</dialog>
-}
+<app-dialog [isOpen]="isTriviaFinished" [text]="resultMessage">
+  <a routerLink="/" class="dialogBtn">Go to Menu</a>
+  <button class="dialogBtn" (click)="resetTrivia()">Retry</button>
+</app-dialog>

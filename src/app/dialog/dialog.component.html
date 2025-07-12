@@ -1,0 +1,13 @@
+@if (isOpen) {
+<div>
+  <div class="dialogBg"></div>
+
+  <dialog class="triviaFinishedDialog" [open]="isOpen">
+    <p>{{ text }}</p>
+
+    <form method="dialog">
+      <ng-content></ng-content>
+    </form>
+  </dialog>
+</div>
+}
