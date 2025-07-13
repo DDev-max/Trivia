@@ -1,5 +1,5 @@
 import { TitleCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   NavigationEnd,
   Router,
@@ -18,7 +18,7 @@ import {
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   readonly categoryColors: Record<CategoryKey, string> = {
     custom: '#660d66',
     entertainment: '#ffb61e',
@@ -66,5 +66,11 @@ export class AppComponent {
     this.categoryBgColor
       ? (this.categoryBgColor = '')
       : (this.categoryBgColor = this.categoryColors[category]);
+  }
+
+  goToLandingPage(e: Event) {
+    if (e.target === e.currentTarget && this.categoryBgColor) {
+      this.router.navigate(['/']);
+    }
   }
 }

@@ -1,3 +1,5 @@
+<app-wave #waveComponentRef />
+
 <form class="questionForm" (click)="nextQuestion()">
   <fieldset>
     <legend>
@@ -28,4 +30,12 @@
 <app-dialog [isOpen]="isTriviaFinished" [text]="resultMessage">
   <a routerLink="/" class="dialogBtn">Go to Menu</a>
   <button class="dialogBtn" (click)="resetTrivia()">Retry</button>
+</app-dialog>
+
+<app-dialog
+  [isOpen]="isTimeUp"
+  text="You drowned in uncertainty. Next time, think faster"
+>
+  <a routerLink="/" class="dialogBtn">Change category</a>
+  <button class="dialogBtn" (click)="resetTrivia()">Try Again</button>
 </app-dialog>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GeographyComponent } from './geography.component';
+import { WaveComponent } from './wave.component';
 
-describe('GeographyComponent', () => {
-  let component: GeographyComponent;
-  let fixture: ComponentFixture<GeographyComponent>;
+describe('WaveComponent', () => {
+  let component: WaveComponent;
+  let fixture: ComponentFixture<WaveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GeographyComponent]
+      imports: [WaveComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GeographyComponent);
+    fixture = TestBed.createComponent(WaveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

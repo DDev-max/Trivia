@@ -1,8 +1,12 @@
-<div class="gridContainer" [class.categorySelected]="categoryBgColor">
-  @for (item of categories; track $index) {
+<div
+  class="gridContainer"
+  (click)="goToLandingPage($event)"
+  [class.categorySelected]="categoryBgColor"
+>
+  @if (!categoryBgColor) { @for (item of categories; track $index) {
   <a
     (click)="categoryTransition(item.name)"
-    [routerLink]="!categoryBgColor ? `/${item.name}` : '/' "
+    [routerLink]="'/' + item.name"
     [class]="[
       item.anchorClassName,
       'categoryLink',
@@ -26,9 +30,14 @@
     <img src="{{ item.iconSource }}" alt="" />
     }
   </a>
-  }
+  }}
 
-  <div [style.background]="categoryBgColor" [style.color]="categoryTxtColor" [style.display]="categoryBgColor ? 'block': 'flex' " class="titleCont">
+  <div
+    [style.background]="categoryBgColor"
+    [style.color]="categoryTxtColor"
+    [style.display]="categoryBgColor ? 'block' : 'flex'"
+    class="titleCont"
+  >
     @if (!categoryBgColor) {
     <h1>🌎TRIVIA QUIZ🧠</h1>
     }

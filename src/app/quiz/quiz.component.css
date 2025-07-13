@@ -6,3 +6,7 @@ legend {
 legend span {
   font-size: 1.5rem;
 }
+
+app-wave{
+  pointer-events: none;
+}

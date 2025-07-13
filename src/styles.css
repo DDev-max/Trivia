@@ -64,7 +64,8 @@ app-trivia-option {
   flex: 1;
 }
 
-.dialogBtn, .dialogBtn:hover {
+.dialogBtn,
+.dialogBtn:hover {
   font-size: 1.5rem;
   background-color: orange;
   color: black;

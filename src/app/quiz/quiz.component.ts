@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { CategoryKey } from '../categories.service';
 import { QuizDataService } from './quiz-data.service';
 import { Questions } from '../quiz/quizJson';
 import { DialogComponent } from '../dialog/dialog.component';
 import { TriviaOptionComponent } from '../trivia-option/trivia-option.component';
+import { WaveComponent } from '../wave/wave.component';
 @Component({
   selector: 'app-quiz',
-  imports: [DialogComponent, RouterLink, TriviaOptionComponent],
+  imports: [DialogComponent, RouterLink, TriviaOptionComponent, WaveComponent],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css',
 })
-export class QuizComponent {
+export class QuizComponent implements OnInit {
   readonly categories: CategoryKey[] = [
     'custom',
     'entertainment',
@@ -44,6 +45,30 @@ export class QuizComponent {
     });
   }
 
+  isTimeUp = false;
+  private seconds = 0;
+  private timerID: ReturnType<typeof setInterval> | null = null;
+
+  ngOnInit(): void {
+    this.startTimer();
+  }
+
+  startTimer() {
+    this.timerID = setInterval(() => {
+      this.seconds++;
+      if (this.seconds >= 6) {
+        this.isTimeUp = true;
+        this.stopTimer();
+      }
+    }, 1 * 1000);
+  }
+
+  stopTimer() {
+    if (!this.timerID) return;
+    clearInterval(this.timerID);
+    this.seconds = 0;
+  }
+
   isShowingAnswers = false;
   selectedOptionIdx = -1;
   currentQuestionIdx = 0;
@@ -51,6 +76,8 @@ export class QuizComponent {
   isTriviaFinished = false;
 
   isChangingQuestion = false;
+
+  @ViewChild('waveComponentRef') waveComponentRef!: WaveComponent;
 
   validateAnswer(optionIdx: number, isCorrect: boolean, e: Event) {
     e.stopPropagation();
@@ -65,6 +92,9 @@ export class QuizComponent {
     if (this.currentQuestionIdx === this.quizInfo.length - 1) {
       this.isTriviaFinished = true;
     }
+
+    this.waveComponentRef.stopWaveGrowth();
+    this.stopTimer();
   }
 
   nextQuestion() {
@@ -75,13 +105,20 @@ export class QuizComponent {
     this.isShowingAnswers = false;
     this.selectedOptionIdx = -1;
 
+    this.waveComponentRef.restartAnimation();
+    this.startTimer();
+
     setTimeout(() => {
       this.isChangingQuestion = false;
     }, 300);
   }
 
   resetTrivia() {
+    this.isTimeUp = false;
     this.isTriviaFinished = false;
+    this.waveComponentRef.restartAnimation();
+    this.startTimer();
+
     this.currentQuestionIdx = 0;
 
     this.isShowingAnswers = false;
