@@ -18,7 +18,7 @@
     }}</span>
 
     @if (item.name === 'custom') {
-    <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <svg class="categoryLink_icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path
         clip-rule="evenodd"
         fill="#ffbdbd"
@@ -27,7 +27,7 @@
       />
     </svg>
     } @else {
-    <img src="{{ item.iconSource }}" alt="" />
+    <img class="categoryLink_icon" src="{{ item.iconSource }}" alt="" />
     }
   </a>
   }}

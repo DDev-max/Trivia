@@ -54,16 +54,20 @@
 .categoryLink:hover span {
   opacity: 0;
 }
+
+.categoryLink_icon {
+  filter: blur(5px);
+  opacity: 0.4;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .categoryLink:hover img,
 .categoryLink:hover svg {
   filter: none;
   opacity: 1;
-}
-
-img,
-svg {
-  filter: blur(5px);
-  opacity: 0.4;
 }
 
 .geographyLink {
@@ -104,9 +108,6 @@ svg {
 }
 .entertainmentLink p {
   color: black;
-}
-.entertainmentLink img {
-  object-position: 0 -24rem;
 }
 
 .titleCont {

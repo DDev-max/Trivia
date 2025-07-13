@@ -3,7 +3,7 @@
     <app-trivia-option
       link="/custom/create"
       value="Create"
-      [bgImgCss]="{ class: '', imgSrc: 'url(/customImgs/create.webp)' }"
+      [bgImgCss]="{ class: '', imgSrc: 'url(/optionsImgs/customImgs/create.webp)' }"
     />
 
     @if (!triviaCreated.length) {
@@ -13,7 +13,7 @@
       valueCssClass="optValue--disabled"
       [bgImgCss]="{
         class: ' bgImg--disabled',
-        imgSrc: ' url(/customImgs/custom1.webp)'
+        imgSrc: ' url(/optionsImgs/customImgs/custom1.webp)'
       }"
     />
 
@@ -25,7 +25,7 @@
       [link]="['/custom/play/', item]"
       [bgImgCss]="{
         class: '',
-        imgSrc: 'url(/customImgs/custom' + ($index + 1) + '.webp)'
+        imgSrc: 'url(/optionsImgs/customImgs/custom' + ($index + 1) + '.webp)'
       }"
     />
     } }

@@ -24,42 +24,42 @@ export class CategoriesService {
     {
       name: 'history',
       iconSource:
-        'https://imagenes.elpais.com/resizer/v2/RLBMLDDMFHSR76JALRXQRJPTIM.jpg?auth=8dbf3df80597e13936cde3e0ac5fe9b81fa77d76001b040117471a3226182f4f&width=414',
+        '/categoriesImgs/history.webp',
       anchorClassName: 'historyLink',
       textColor: 'white',
     },
     {
       name: 'geography',
       iconSource:
-        'https://concepto.de/wp-content/uploads/2019/09/geografia-e1568584083152.jpg',
+        '/categoriesImgs/geo.webp',
       anchorClassName: 'geographyLink',
       textColor: 'white',
     },
     {
       name: 'sports',
       iconSource:
-        'https://cloudfront-us-east-1.images.arcpublishing.com/gruponacion/QI3N45ZRFNC6ZLPY7TEBMGO354.jpg',
+        '/categoriesImgs/sports.webp',
       anchorClassName: 'sportsLink',
       textColor: 'white',
     },
     {
       name: 'general',
       iconSource:
-        'https://miro.medium.com/v2/resize:fit:1400/1*d4pH81EpdAIowvD50esR5Q.jpeg',
+        '/categoriesImgs/general.webp',
       anchorClassName: 'generalCatgryLink',
       textColor: 'black',
     },
     {
       name: 'food',
       iconSource:
-        'https://productoschata.com/wp-content/uploads/2023/07/2-6.jpg',
+        '/categoriesImgs/food.webp',
       anchorClassName: 'foodLink',
       textColor: 'white',
     },
     {
       name: 'entertainment',
       iconSource:
-        'https://static.mercadonegro.pe/wp-content/uploads/2019/07/22193852/netflix-movies-.jpg',
+        '/categoriesImgs/entertainment.webp',
       anchorClassName: 'entertainmentLink',
       textColor: 'black',
     },
