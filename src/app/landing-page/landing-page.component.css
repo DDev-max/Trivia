@@ -15,15 +15,6 @@
   view-transition-name: gridRows;
 }
 
-.categorySelected {
-  animation: changeGridRows 1s;
-  grid-template-rows: 1fr 14fr 1fr;
-}
-
-.categorySelected a {
-  opacity: 0;
-}
-
 .categoryLink span {
   background: rgb(92, 16, 11);
   padding: 1rem;

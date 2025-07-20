@@ -1,0 +1,35 @@
+<app-layout #layout="layout">
+  @if (!layout.categoryBgColor) { @for (item of layout.categories; track $index)
+  {
+  <a
+    [routerLink]="'/' + item.name"
+    [class]="[
+      item.anchorClassName,
+      'categoryLink',
+      layout.categoryBgColor ? 'hideCategory' : ''
+    ]"
+  >
+    <span [style.background]="layout.categoryColors[item.name]">{{
+      item.name | titlecase
+    }}</span>
+
+    @if (item.name === 'custom') {
+    <svg
+      class="categoryLink_icon"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        clip-rule="evenodd"
+        fill="#ffbdbd"
+        fill-rule="evenodd"
+        [attr.d]="item.iconSource"
+      />
+    </svg>
+    } @else {
+    <img class="categoryLink_icon" src="{{ item.iconSource }}" alt="" />
+    }
+  </a>
+  }}
+</app-layout>

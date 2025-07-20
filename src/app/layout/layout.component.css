@@ -1,0 +1,46 @@
+.gridContainer {
+  display: grid;
+  grid-template-areas:
+    "histry     geo        sports  sports"
+    "food       TITLE      TITLE   genrl"
+    "entrtnmnt  entrtnmnt  edit    genrl ";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0.4rem;
+  height: 100vh;
+  padding: 0.5rem;
+  overflow: hidden;
+  transition: all 1s;
+
+  view-transition-name: gridRows;
+}
+
+.titleCont {
+  min-width: 55vw;
+  min-height: 48vh;
+  grid-area: TITLE;
+  font-size: 5rem;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid #0000;
+  background: linear-gradient(darkred) padding-box,
+    linear-gradient(var(--angle), darkred, rgb(255, 163, 163)) border-box;
+  animation: 5s rotate linear infinite;
+  transition: 1s ease-in-out;
+
+  border-radius: 2rem;
+  color: rgb(255, 158, 128);
+}
+
+.titleCont h1 {
+  font-size: 5rem;
+}
+
+.categorySelected {
+  animation: changeGridRows 1s;
+  grid-template-rows: 1fr 14fr 1fr;
+}
+
+.categorySelected a {
+  opacity: 0;
+}
