@@ -1,0 +1,23 @@
+<div
+  class="gridContainer"
+  (click)="goToLandingPage($event)"
+  [class.categorySelected]="colors.layout()"
+>
+  @if (!colors.layout()) {
+  <router-outlet></router-outlet>
+  }
+
+  <div
+    [style.background]="colors.layout()"
+    [style.color]="categoryTxtColor"
+    [style.display]="colors.layout() ? 'block' : 'flex'"
+    class="titleCont"
+  >
+    @if (!colors.layout()) {
+    <h1>🌎TRIVIA QUIZ🧠</h1>
+    }@else {
+    <router-outlet></router-outlet>
+
+    }
+  </div>
+</div>

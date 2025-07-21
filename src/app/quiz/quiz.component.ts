@@ -6,6 +6,7 @@ import { Questions } from '../quiz/quizJson';
 import { DialogComponent } from '../dialog/dialog.component';
 import { TriviaOptionComponent } from '../trivia-option/trivia-option.component';
 import { WaveComponent } from '../wave/wave.component';
+import { categoriesNames } from '../categoriesObj';
 @Component({
   selector: 'app-quiz',
   imports: [DialogComponent, RouterLink, TriviaOptionComponent, WaveComponent],
@@ -13,16 +14,6 @@ import { WaveComponent } from '../wave/wave.component';
   styleUrl: './quiz.component.css',
 })
 export class QuizComponent implements OnInit {
-  readonly categories: CategoryKey[] = [
-    'custom',
-    'entertainment',
-    'food',
-    'general',
-    'history',
-    'sports',
-    'geography',
-  ];
-
   quizInfo: readonly Questions[] = [];
 
   constructor(
@@ -35,7 +26,7 @@ export class QuizComponent implements OnInit {
       const customQuizName = params.get('customQuizName') || '';
 
       if (
-        !this.categories.includes(quizType) &&
+        !categoriesNames.includes(quizType) &&
         !Object.keys(localStorage).includes(customQuizName)
       ) {
         router.navigate(['/']);

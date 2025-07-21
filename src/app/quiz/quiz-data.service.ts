@@ -11,6 +11,8 @@ export class QuizDataService {
       localStorage.getItem(typeName) || '{}'
     );
 
-    return triviaCreated?.length ? triviaCreated : quizJson[typeName as Exclude<CategoryKey, 'custom'>];
+    return triviaCreated?.length
+      ? triviaCreated
+      : quizJson[typeName as Exclude<CategoryKey, 'custom'>];
   }
 }

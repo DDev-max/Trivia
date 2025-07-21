@@ -1,15 +1,14 @@
-<app-layout #layout="layout">
-  @if (!layout.categoryBgColor) { @for (item of layout.categories; track $index)
+@for (item of categories.getAllCategories(); track $index)
   {
   <a
     [routerLink]="'/' + item.name"
     [class]="[
       item.anchorClassName,
       'categoryLink',
-      layout.categoryBgColor ? 'hideCategory' : ''
+      colors.layout() ? 'hideCategory' : ''
     ]"
   >
-    <span [style.background]="layout.categoryColors[item.name]">{{
+    <span [style.background]="colors.categoryColors[item.name]">{{
       item.name | titlecase
     }}</span>
 
@@ -31,5 +30,4 @@
     <img class="categoryLink_icon" src="{{ item.iconSource }}" alt="" />
     }
   </a>
-  }}
-</app-layout>
+  }

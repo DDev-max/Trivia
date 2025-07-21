@@ -63,6 +63,9 @@ app-trivia-option {
   display: flex;
   flex: 1;
 }
+app-landing-page{
+  display: contents;
+}
 
 .dialogBtn,
 .dialogBtn:hover {
