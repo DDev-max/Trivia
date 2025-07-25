@@ -7,6 +7,8 @@ form {
 
 h1 {
   text-align: center;
+  font-size: var(--titleFntSize);
+  margin-bottom: .5rem;
 }
 
 fieldset {
@@ -35,6 +37,11 @@ legend {
   padding: 0 0 1rem 0;
 
   border-bottom: 0.1rem solid darkorange;
+}
+@media (width < 1060px) {
+  .optionsContainer_inputsContainer {
+    flex-direction: column;
+  }
 }
 
 .inputsContainer_label {
@@ -81,6 +88,7 @@ input[type="text"] {
   margin-top: 0.5rem;
   color: #000000;
   font-weight: bold;
+  font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
 .optionsContainer_generalErrors {

@@ -1,33 +1,33 @@
-@for (item of categories.getAllCategories(); track $index)
-  {
-  <a
-    [routerLink]="'/' + item.name"
-    [class]="[
-      item.anchorClassName,
-      'categoryLink',
-      colors.layout() ? 'hideCategory' : ''
-    ]"
-  >
-    <span [style.background]="colors.categoryColors[item.name]">{{
-      item.name | titlecase
-    }}</span>
+@for (item of categories.getAllCategories(); track $index) {
+<a
+  [routerLink]="'/' + item.name"
+  [class]="[
+    item.anchorClassName,
+    'categoryLink',
+    colors.layout() ? 'hideCategory' : ''
+  ]"
+>
+  <div class="categoryLink_nameDiv" [style.background]="colors.categoryColors[item.name]">
+    <ng-container *ngComponentOutlet="item.iconComponent"></ng-container>
+    <span> {{ item.name | titlecase }} </span>
+  </div>
 
-    @if (item.name === 'custom') {
-    <svg
-      class="categoryLink_icon"
-      fill="none"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        clip-rule="evenodd"
-        fill="#ffbdbd"
-        fill-rule="evenodd"
-        [attr.d]="item.iconSource"
-      />
-    </svg>
-    } @else {
-    <img class="categoryLink_icon" src="{{ item.iconSource }}" alt="" />
-    }
-  </a>
+  @if (item.name === 'custom') {
+  <svg
+    class="categoryLink_bgImg"
+    fill="none"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      clip-rule="evenodd"
+      fill="#ffbdbd"
+      fill-rule="evenodd"
+      [attr.d]="item.bgImgSrc"
+    />
+  </svg>
+  } @else {
+  <img class="categoryLink_bgImg" src="{{ item.bgImgSrc }}" alt="" />
   }
+</a>
+}

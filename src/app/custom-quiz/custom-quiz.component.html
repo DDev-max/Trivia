@@ -14,7 +14,7 @@
   @if (quizForm.get('triviaName')?.hasError('required')) {
   <p class="formErrorMsg">Please enter trivia name</p>
   } @if (quizForm.get('triviaName')?.hasError('itsInLocalStorage')) {
-  <p class="formErrorMsg">La trivia ya existe, por favor asigne otro nombre.</p>
+  <p class="formErrorMsg">The trivia already exists, please use another name.</p>
   } @for (questionCtrl of questions.controls; track $index; let qIdx = $index) {
 
   <fieldset [formGroup]="questionCtrl">

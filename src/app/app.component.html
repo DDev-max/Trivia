@@ -12,9 +12,15 @@
     [style.color]="categoryTxtColor"
     [style.display]="colors.layout() ? 'block' : 'flex'"
     class="titleCont"
+    [class.titleCont--expanded]="colors.layout()"
   >
     @if (!colors.layout()) {
-    <h1>🌎TRIVIA QUIZ🧠</h1>
+    <h1>
+      <span>🌎</span>
+      <span>TRIVIA</span>
+      <span> QUIZ</span>
+      <span>🧠</span>
+    </h1>
     }@else {
     <router-outlet></router-outlet>
 

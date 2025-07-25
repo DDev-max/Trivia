@@ -57,6 +57,12 @@ canvas {
   top: 32%;
 }
 
+@media (width < 700px) {
+  .content{
+    display: none;
+  }
+}
+
 @keyframes wave {
   0% {
     transform: rotate(-2deg) translatex(-2vw);

@@ -1,3 +1,7 @@
+:root {
+  --titleFntSize: clamp(1.4rem, 7vw, 2.8rem);
+}
+
 *,
 *::after,
 *::before {
@@ -7,6 +11,10 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+}
+
+input[type="radio"] {
+  appearance: none;
 }
 
 body {
@@ -34,8 +42,13 @@ body {
   height: 100%;
   display: flex;
 }
+
+.questionForm fieldset {
+  width: 100%;
+}
+
 .optionsCont {
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -63,13 +76,13 @@ app-trivia-option {
   display: flex;
   flex: 1;
 }
-app-landing-page{
+app-landing-page {
   display: contents;
 }
 
 .dialogBtn,
 .dialogBtn:hover {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 5vw, 1.5rem);
   background-color: orange;
   color: black;
   margin: 1rem 1rem 0 1rem;
@@ -79,4 +92,17 @@ app-landing-page{
   cursor: pointer;
   box-shadow: none;
   border: none;
+}
+
+.categorySVG {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+  fill: white;
+}
+
+@media (width < 700px) {
+  .categorySVG {
+    margin: 0;
+  }
 }

@@ -33,7 +33,28 @@
 }
 
 .titleCont h1 {
-  font-size: 5rem;
+  font-size: clamp(2rem, 10vw, 5rem);
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.8rem;
+}
+
+@media (width < 700px) {
+  .titleCont {
+    border-radius: 0.5rem;
+  }
+
+  .titleCont--expanded {
+    width: 90vw;
+  }
+}
+@media (width < 500px) {
+  .titleCont h1 {
+    width: 8rem;
+  }
 }
 
 @keyframes rotate {
