@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,14 +8,12 @@ import { RouterLink } from '@angular/router';
   styleUrl: './trivia-option.component.css',
 })
 export class TriviaOptionComponent {
-  @Input({ required: true }) value = '';
-  @Input() valueCssClass = ''
-
-
+  value = input.required();
+  valueCssClass = input('');
   @Output() clickRemoveBtn = new EventEmitter<void>();
-  @Input() bgImgCss? = { class: {}, imgSrc: '' };
+  bgImgCss = input({ class: {}, imgSrc: '' });
 
-  @Input() link?: string | string[] = '';
+  link = input<string | string[]>('');
 
   @Output() inputClick = new EventEmitter<Event>();
   static idCounter = 0;
