@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { Wave, WaveConfig } from './wave';
 
 @Component({
@@ -8,13 +8,14 @@ import { Wave, WaveConfig } from './wave';
   styleUrl: './wave.component.css',
 })
 export class WaveComponent {
-  @ViewChild('animatedCanvas') canvasRef!: ElementRef<HTMLCanvasElement>;
-  @ViewChild('fillerRef') fillerRef!: ElementRef<HTMLDivElement>;
+  canvasRef =
+    viewChild.required<ElementRef<HTMLCanvasElement>>('animatedCanvas');
+  fillerRef = viewChild.required<ElementRef<HTMLDivElement>>('fillerRef');
 
   private wave!: Wave;
 
   ngAfterViewInit() {
-    const canvas = this.canvasRef.nativeElement;
+    const canvas = this.canvasRef().nativeElement;
     const waveConfig: WaveConfig = {
       strokeColor: '#66c5e8',
       fillColor: '#8ED6FF',
@@ -30,16 +31,18 @@ export class WaveComponent {
   isPaused = false;
 
   restartAnimation() {
-    this.fillerRef.nativeElement.classList.remove('growWaveAnimation');
+    this.fillerRef().nativeElement.classList.remove('growWaveAnimation');
 
-    void this.fillerRef.nativeElement.offsetWidth; //forces browser to read changes
+    void this.fillerRef().nativeElement.offsetWidth; //forces browser to read changes
 
-    this.fillerRef.nativeElement.classList.add('growWaveAnimation');
+    this.fillerRef().nativeElement.classList.add('growWaveAnimation');
     this.isPaused = false;
   }
 
   stopWaveAnimation() {
-    this.wave.stop();
+    if (this.wave) {
+      this.wave.stop();
+    }
   }
 
   stopWaveGrowth() {

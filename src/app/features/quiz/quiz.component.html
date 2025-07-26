@@ -1,10 +1,10 @@
 <app-wave #waveComponentRef />
 
-<form class="questionForm" (click)="nextQuestion()">
+<form class="questionForm" [ariaHidden]="isTriviaFinished || isTimeUp" (click)="nextQuestion()">
   <fieldset>
     <legend>
       {{ quizInfo[currentQuestionIdx].question | titlecase}}
-      <span>({{ currentQuestionIdx + 1 }}/{{ quizInfo.length }})</span>
+      <span [ariaLabel]=" 'Question '+(currentQuestionIdx + 1)+' of '+ quizInfo.length ">({{ currentQuestionIdx + 1 }}/{{ quizInfo.length }})</span>
     </legend>
 
     <div class="optionsCont">

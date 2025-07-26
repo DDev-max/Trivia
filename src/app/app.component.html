@@ -8,6 +8,7 @@
   }
 
   <div
+    aria-live="polite"
     [style.background]="colors.layout()"
     [style.color]="categoryTxtColor"
     [style.display]="colors.layout() ? 'block' : 'flex'"
@@ -16,10 +17,10 @@
   >
     @if (!colors.layout()) {
     <h1>
-      <span>🌎</span>
+      <span aria-hidden="true">🌎</span>
       <span>TRIVIA</span>
       <span> QUIZ</span>
-      <span>🧠</span>
+      <span aria-hidden="true">🧠</span>
     </h1>
     }@else {
     <router-outlet></router-outlet>

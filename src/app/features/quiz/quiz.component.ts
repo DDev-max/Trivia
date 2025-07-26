@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  viewChild,
+} from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { QuizDataService } from './quizService/quiz-data.service';
 import { Questions } from './quizService/quizJson';
@@ -13,11 +18,17 @@ import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-quiz',
-  imports: [DialogComponent, RouterLink, TriviaOptionComponent, WaveComponent, TitleCasePipe],
+  imports: [
+    DialogComponent,
+    RouterLink,
+    TriviaOptionComponent,
+    WaveComponent,
+    TitleCasePipe,
+  ],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css',
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, OnDestroy {
   quizInfo: readonly Questions[] = [];
 
   constructor(
@@ -72,7 +83,7 @@ export class QuizComponent implements OnInit {
 
   isChangingQuestion = false;
 
-  @ViewChild('waveComponentRef') waveComponentRef!: WaveComponent;
+  waveComponentRef = viewChild.required(WaveComponent);
 
   validateAnswer(optionIdx: number, isCorrect: boolean, e: Event) {
     e.stopPropagation();
@@ -88,10 +99,11 @@ export class QuizComponent implements OnInit {
       this.isTriviaFinished = true;
     }
 
-    this.waveComponentRef.stopWaveGrowth();
+    this.waveComponentRef().stopWaveGrowth();
     this.stopTimer();
   }
 
+  private questionTimeOutID: ReturnType<typeof setTimeout> | null = null;
   nextQuestion() {
     if (!this.isShowingAnswers) return;
 
@@ -100,10 +112,10 @@ export class QuizComponent implements OnInit {
     this.isShowingAnswers = false;
     this.selectedOptionIdx = -1;
 
-    this.waveComponentRef.restartAnimation();
+    this.waveComponentRef().restartAnimation();
     this.startTimer();
 
-    setTimeout(() => {
+    this.questionTimeOutID = setTimeout(() => {
       this.isChangingQuestion = false;
     }, 300);
   }
@@ -111,7 +123,7 @@ export class QuizComponent implements OnInit {
   resetTrivia() {
     this.isTimeUp = false;
     this.isTriviaFinished = false;
-    this.waveComponentRef.restartAnimation();
+    this.waveComponentRef().restartAnimation();
     this.startTimer();
 
     this.currentQuestionIdx = 0;
@@ -119,6 +131,18 @@ export class QuizComponent implements OnInit {
     this.isShowingAnswers = false;
     this.selectedOptionIdx = -1;
     this.correctAnswerCount = 0;
+  }
+
+  ngOnDestroy(): void {
+    if (this.waveComponentRef) {
+      this.waveComponentRef().stopWaveAnimation();
+    }
+    if (this.timerID) {
+      clearInterval(this.timerID);
+    }
+    if (this.questionTimeOutID) {
+      clearTimeout(this.questionTimeOutID);
+    }
   }
 
   get resultMessage() {
