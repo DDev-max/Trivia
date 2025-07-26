@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -11,6 +10,7 @@ import { checkBoxValidators } from './validators/check-box-validators';
 import { localStorageValidator } from './validators/local-storage-validator';
 import { DialogComponent } from '../dialog/dialog.component';
 import { RouterLink } from '@angular/router';
+import { maxLengthArrayValidator } from './validators/max-length-validator';
 
 @Component({
   selector: 'app-custom-quiz',
@@ -27,7 +27,7 @@ export class CustomQuizComponent {
         'My trivia game',
         [Validators.required, localStorageValidator],
       ],
-      questions: this.fb.array([this.createQuestion()]),
+      questions: this.fb.array([this.createQuestion()], [maxLengthArrayValidator(15)]),
     });
   }
 
@@ -35,7 +35,7 @@ export class CustomQuizComponent {
     return this.fb.group({
       question: ['', Validators.required],
       options: this.fb.array([this.createOption(true), this.createOption()], {
-        validators: checkBoxValidators,
+        validators: [checkBoxValidators, maxLengthArrayValidator(6)],
       }),
     });
   }
@@ -53,6 +53,7 @@ export class CustomQuizComponent {
   }
 
   addQuestion() {
+    if (this.questions.hasError('maxLengthArray')) return;
     this.questions.push(this.createQuestion());
   }
 
@@ -63,7 +64,9 @@ export class CustomQuizComponent {
   }
 
   addOption(questionIdx: number) {
-    this.getOptionsByIdx(questionIdx).push(this.createOption());
+    const currentOptions = this.getOptionsByIdx(questionIdx);
+    if (currentOptions.hasError('maxLengthArray')) return;
+    currentOptions.push(this.createOption());
   }
 
   removeQuestion(questionIdx: number) {
@@ -74,7 +77,7 @@ export class CustomQuizComponent {
     this.getOptionsByIdx(questionIdx).removeAt(optIdx);
   }
 
-  isSubmitted = false
+  isSubmitted = false;
   saveTrivia() {
     if (this.quizForm.invalid) {
       this.quizForm.markAllAsTouched();
@@ -85,11 +88,11 @@ export class CustomQuizComponent {
     const triviaName = this.quizForm.get('triviaName')?.value;
 
     localStorage.setItem(triviaName, jsonForm);
-    this.isSubmitted = true
+    this.isSubmitted = true;
   }
 
-  resetForm(){
-    this.quizForm.reset()
-    this.isSubmitted = false
+  resetForm() {
+    this.quizForm.reset();
+    this.isSubmitted = false;
   }
 }

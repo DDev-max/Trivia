@@ -1,5 +1,7 @@
 :root {
   --titleFntSize: clamp(1.4rem, 7vw, 2.8rem);
+  --btnBgColor: #fdb575;
+  --btnShadowColor: #c64242;
 }
 
 *,
@@ -60,16 +62,24 @@ body {
 button {
   padding: 0.7rem;
   border-radius: 1rem;
-  border: 0.2rem solid rgb(212 132 132);
-  box-shadow: inset -0.2rem -0.2rem 0.2rem #c64242;
-  background: #fdb575;
+  border: 0.2rem solid #d48484;
+  box-shadow: inset -0.2rem -0.2rem 0.2rem var(--btnShadowColor);
+  background: var(--btnBgColor);
   line-height: 1;
 }
 
 button:hover {
-  background-color: #c64242;
+  background-color: var(--btnShadowColor);
   color: white;
   cursor: pointer;
+}
+
+button:disabled,
+button:disabled:hover {
+  box-shadow: none;
+  background: var(--btnBgColor);
+  color: gray;
+  cursor: default;
 }
 
 app-trivia-option {

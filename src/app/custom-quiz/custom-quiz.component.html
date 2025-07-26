@@ -101,7 +101,7 @@
           <p class="formErrorMsg">All answers cannot be correct</p>
           }
         </div>
-        <button type="button" (click)="addOption(qIdx)">
+        <button [disabled]="getOptionsByIdx(qIdx).hasError('maxLengthArray')" type="button" (click)="addOption(qIdx)">
           Add More Options
         </button>
       </div>
@@ -111,7 +111,7 @@
   }
 
   <footer class="footerBtns">
-    <button type="button" (click)="addQuestion()">Add New Question</button>
+    <button type="button" [disabled]="questions.errors?.['maxLengthArray']" (click)="addQuestion()">Add New Question</button>
     <button>Finish Trivia</button>
   </footer>
 </form>
