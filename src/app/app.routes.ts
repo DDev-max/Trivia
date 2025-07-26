@@ -1,21 +1,22 @@
 import { Routes } from '@angular/router';
-import { QuizComponent } from './quiz/quiz.component';
-import { CustomQuizComponent } from './custom-quiz/custom-quiz.component';
-import { CustomMenuComponent } from './custom-menu/custom-menu.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { HomeComponent } from './features/home/home.component';
+import { MenuComponent } from './features/create-quiz/menu/menu.component';
+import { CreateQuizComponent } from './features/create-quiz/create-quiz.component';
+import { QuizComponent } from './features/quiz/quiz.component';
+
 
 export const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent,
+    component: HomeComponent,
   },
   {
     path: 'custom',
-    component: CustomMenuComponent,
+    component: MenuComponent,
   },
   {
     path: 'custom/create',
-    component: CustomQuizComponent,
+    component: CreateQuizComponent,
   },
   {
     path: 'custom/play/:customQuizName',

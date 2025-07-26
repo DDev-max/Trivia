@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { ColorsService } from './colors.service';
-import { CategoriesService, CategoryKey } from './categories.service';
-import { categoriesNames } from './categoriesObj';
+import { ColorsService } from './shared/services/colors.service';
+import {
+  CategoriesService,
+} from './shared/services/categories-service/categories.service';
+import { categoriesNames, CategoryKey } from './shared/services/categories-service/categoriesObj';
 
 @Component({
   selector: 'app-root',
