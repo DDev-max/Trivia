@@ -1,59 +1,38 @@
-# Trivia
+# Trivia Quiz 🧠
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+A web application built with **Angular 19**, allowing users to play trivia games by choosing from existing categories or creating their own. The interface delivers a modern experience through the use of the **View Transitions API**, smooth **canvas animations**, and cutting-edge Angular features such as **Signals**.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Play trivia games using predefined or custom categories.
+- Smooth navigation with view transitions.
+- **Feature-based folder structure** using dedicated Angular modules for each main section.
+- Single Page Application (**SPA**) built with Angular Router
+- Includes form validation using Angular **Reactive Forms** for creating and editing questions and categories.
 
+
+
+## **Installation & Setup**
+
+### 1️⃣ Clone this repository:
+
+```bash
+https://github.com/DDev-max/Trivia.git
+```
+
+### 2️⃣ Navigate into the project directory:
+```bash
+cd Trivia
+```
+
+### 3️⃣ Install dependencies:
+```bash
+npm install
+```
+### 4️⃣ Run the project locally:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
