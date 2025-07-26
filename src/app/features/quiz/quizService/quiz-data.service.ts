@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CategoryKey } from '../../shared/services/categories-service/categoriesObj';
+import { CategoryKey } from '../../../shared/services/categories-service/categoriesObj';
 import { Questions, quizJson } from './quizJson';
+import { randomizeQuiz } from './randomizeQuiz';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,6 @@ export class QuizDataService {
 
     return triviaCreated?.length
       ? triviaCreated
-      : quizJson[typeName as Exclude<CategoryKey, 'custom'>];
+      : randomizeQuiz(quizJson[typeName as Exclude<CategoryKey, 'custom'>]);
   }
 }

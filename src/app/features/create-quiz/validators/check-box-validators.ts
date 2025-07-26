@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { Options } from '../../quiz/quizJson';
+import { Options } from '../../quiz/quizService/quizJson';
 
 export function checkBoxValidators(
   control: AbstractControl

@@ -3,7 +3,7 @@
 <form class="questionForm" (click)="nextQuestion()">
   <fieldset>
     <legend>
-      {{ quizInfo[currentQuestionIdx].question }}
+      {{ quizInfo[currentQuestionIdx].question | titlecase}}
       <span>({{ currentQuestionIdx + 1 }}/{{ quizInfo.length }})</span>
     </legend>
 

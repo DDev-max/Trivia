@@ -1,15 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
-import { QuizDataService } from './quiz-data.service';
-import { Questions } from '../quiz/quizJson';
+import { QuizDataService } from './quizService/quiz-data.service';
+import { Questions } from './quizService/quizJson';
 import { TriviaOptionComponent } from '../../shared/components/trivia-option/trivia-option.component';
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
-import { categoriesNames, CategoryKey } from '../../shared/services/categories-service/categoriesObj';
+import {
+  categoriesNames,
+  CategoryKey,
+} from '../../shared/services/categories-service/categoriesObj';
 import { WaveComponent } from './wave/wave.component';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-quiz',
-  imports: [DialogComponent, RouterLink, TriviaOptionComponent, WaveComponent],
+  imports: [DialogComponent, RouterLink, TriviaOptionComponent, WaveComponent, TitleCasePipe],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css',
 })
