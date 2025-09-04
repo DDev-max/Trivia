@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   OnDestroy,
   OnInit,
@@ -27,6 +28,7 @@ import { TitleCasePipe } from '@angular/common';
   ],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuizComponent implements OnInit, OnDestroy {
   quizInfo: readonly Questions[] = [];

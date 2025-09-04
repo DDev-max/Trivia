@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -17,6 +17,7 @@ import { DialogComponent } from '../../shared/components/dialog/dialog.component
   imports: [ReactiveFormsModule, DialogComponent, RouterLink],
   templateUrl: './create-quiz.component.html',
   styleUrl: './create-quiz.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateQuizComponent {
   quizForm: FormGroup;

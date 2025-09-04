@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ColorsService } from './shared/services/colors.service';
+import { CategoriesService } from './shared/services/categories-service/categories.service';
 import {
-  CategoriesService,
-} from './shared/services/categories-service/categories.service';
-import { categoriesNames, CategoryKey } from './shared/services/categories-service/categoriesObj';
+  categoriesNames,
+  CategoryKey,
+} from './shared/services/categories-service/categoriesObj';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   constructor(

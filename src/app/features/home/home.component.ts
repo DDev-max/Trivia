@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgComponentOutlet, TitleCasePipe } from '@angular/common';
 import { ColorsService } from '../../shared/services/colors.service';
@@ -9,6 +9,7 @@ import { CategoriesService } from '../../shared/services/categories-service/cate
   imports: [RouterLink, TitleCasePipe, NgComponentOutlet],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
   constructor(
